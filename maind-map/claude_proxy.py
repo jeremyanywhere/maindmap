@@ -1,3 +1,4 @@
+#Should really be deleted now.. deprecated.
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
@@ -38,7 +39,7 @@ API_KEY = get_api_key_from_file()
 print(f"Final API key being used (first 10 chars): {API_KEY[:10]}...")
 
 
-@app.route('/api/ping', methods=['GET'])
+@app.route('/ping', methods=['GET'])
 def ping():
     return jsonify({
         'success': True,
@@ -46,7 +47,7 @@ def ping():
     })
 
 
-@app.route('/api/claude', methods=['POST'])
+@app.route('/claude', methods=['POST'])
 def proxy_to_claude():
     try:
         # Get the request data from the frontend
@@ -69,7 +70,7 @@ def proxy_to_claude():
         print(f"Using API key: {API_KEY[:10]}...")
         
         payload = {
-            'model': 'claude-3-opus-20240229',
+            'model': 'claude-3-haiku-20240307',
             'max_tokens': 4000,
             'messages': [
                 {
